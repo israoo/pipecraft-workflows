@@ -1,0 +1,15 @@
+name: Orchestrator
+
+on:
+  workflow_call:
+    inputs:
+      message:
+        description: "Message to send to downstream workflow"
+        required: true
+        type: string
+
+jobs:
+  run-simple-workflow:
+    uses: ./.github/workflows/simple-workflow.yml
+    with:
+      message: ${{ inputs.message }}
